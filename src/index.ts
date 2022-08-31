@@ -11,6 +11,9 @@ export class Interceptor {
         this.options = { input, mockDir, }
     }
     apply(compiler: Compiler) {
+        if (process.env.NODE_ENV === 'production') {
+            return
+        }
         compiler.hooks.compilation.tap(pluginName, compilation => {
             NormalModule.getCompilationHooks(compilation).beforeLoaders.tap(pluginName, (_, normalModule) => {
                 let id = normalize(normalModule.userRequest)

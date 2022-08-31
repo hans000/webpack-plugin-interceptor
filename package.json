@@ -6,12 +6,14 @@
 		"webpack",
 		"webpack-plugin",
 		"mock",
+		"mock-server",
 		"easy-interceptor"
 	],
 	"files": [
 		"dist",
 		"readme.md",
 		"readme-zh.md",
+		"typing.d.ts",
 		"license",
 		"package.json"
 	],
@@ -33,6 +35,7 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@types/node": "^18.7.14",
 		"cpx": "^1.5.0",
 		"rollup": "^2.78.1",
 		"rollup-plugin-typescript2": "^0.33.0",

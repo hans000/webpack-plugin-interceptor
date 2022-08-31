@@ -20,6 +20,8 @@ export default defineConfig({
     external: [
         'path',
         'fs',
+        'webpack-dev-server',
+        'webpack',
     ],
     plugins: [
         typescript({
