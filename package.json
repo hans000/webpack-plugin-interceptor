@@ -1,0 +1,45 @@
+{
+	"name": "webpack-plugin-interceptor",
+	"version": "1.0.0",
+	"description": "A webpack plugin based on service worker to intercept and modify requests in a development environment",
+	"keywords": [
+		"webpack",
+		"webpack-plugin",
+		"mock",
+		"easy-interceptor"
+	],
+	"files": [
+		"dist",
+		"readme.md",
+		"readme-zh.md",
+		"license",
+		"package.json"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/types/index.d.ts",
+	"scripts": {
+		"build": "rollup -c && cpx ./src/scripts/**/* ./dist/scripts"
+	},
+	"author": {
+		"name": "hans000",
+		"email": "hhance@163.com"
+	},
+	"repository": {
+		"url": "https://github.com/hans000/webpack-plugin-interceptor.git"
+	},
+	"bugs": {
+		"url": "https://github.com/hans000/webpack-plugin-interceptor/issues"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"cpx": "^1.5.0",
+		"rollup": "^2.78.1",
+		"rollup-plugin-typescript2": "^0.33.0",
+		"typescript": "^4.8.2"
+	},
+	"peerDependencies": {
+		"webpack": "^5.74.0",
+		"webpack-dev-server": "^4.10.1"
+	}
+}
