@@ -20,7 +20,7 @@ export default {
     plugins: [
         // Interceptor()
         // or
-        Interceptor({
+        new Interceptor({
             input: 'src/index.ts', // 默认src/index.ts
             mockDir: './src/__mock__',   // 默认src/mock
         }),
