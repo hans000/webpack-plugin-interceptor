@@ -6,12 +6,14 @@
 		"webpack",
 		"webpack-plugin",
 		"mock",
+		"mock-server",
 		"easy-interceptor"
 	],
 	"files": [
 		"dist",
 		"readme.md",
 		"readme-zh.md",
+		"typing.d.ts",
 		"license",
 		"package.json"
 	],
