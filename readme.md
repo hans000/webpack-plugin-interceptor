@@ -34,6 +34,18 @@ export default {
     }
 }
 ```
+
+in webpack-dev-server3.0
+```
+export default {
+    devServer: {
+        before: (app) => {
+            app.use(middleware.middleware)
+        }
+    }
+}
+```
+
 // new a ts or js file in \_\_mock\_\_ dir，must be use export default and set rules by plugin provide
 ```
 export default function() {
@@ -55,6 +67,18 @@ ts type, new a `interceptor.d.ts` file, input this text
 
 ```
 /// <reference types="webpack-plugin-interceptor/typing" />
+```
+
+
+you will meet the following errors in https project. The solutions are as follows
+```
+Uncaught (in promise) DOMException: Failed to register a ServiceWorker for scope ('https://127.0.0.1/') with script ('https://127.0.0.1/sw000.js'): An SSL certificate error occurred when fetching the script.
+
+// terminal
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/tmp --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:443
+
+// windows
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=./tmp --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:443
 ```
 
 ## API

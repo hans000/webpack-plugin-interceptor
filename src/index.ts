@@ -15,36 +15,45 @@ export class Interceptor {
             return
         }
         compiler.hooks.compilation.tap(pluginName, compilation => {
-            NormalModule.getCompilationHooks(compilation).beforeLoaders.tap(pluginName, (_, normalModule) => {
-                let id = normalize(normalModule.userRequest)
-                let input = this.options.input
-                input = normalize(input)
-                input = isAbsolute(input) ? input : join(process.cwd(), input)
-    
-                if (! extname(input)) {
-                    const exts = ['.tsx', '.ts', '.jsx', '.mjs', '.js']
-                    for(let ext of exts) {
-                        if (input + ext === id) {
-                            normalModule.loaders.push({
-                                loader: require.resolve('./scripts/loader.js'),
-                                options: {
-                                    mockDir: this.options.mockDir,
-                                    input: id,
-                                }
-                            } as any)
-                        }
-                    }
-                } else if (input === id) {
-                    normalModule.loaders.push({
-                        loader: require.resolve('./loader.js'),
+            if (NormalModule?.getCompilationHooks) {
+                NormalModule.getCompilationHooks(compilation).beforeLoaders.tap(pluginName, (_, normalModule) => {
+                    this._injectHandle(normalModule)
+                })
+            } else {
+                compilation.hooks.normalModuleLoader.tap(pluginName, (_, normalModule) => {
+                    this._injectHandle(normalModule)
+                })
+            }
+        })
+    }
+    private _injectHandle(normalModule: NormalModule) {
+        let id = normalize(normalModule.userRequest)
+        let input = this.options.input
+        input = normalize(input)
+        input = isAbsolute(input) ? input : join(process.cwd(), input)
+
+        if (! extname(input)) {
+            const exts = ['.tsx', '.ts', '.jsx', '.mjs', '.js']
+            for(let ext of exts) {
+                if (input + ext === id) {
+                    normalModule.loaders.unshift({
+                        loader: require.resolve('./scripts/loader.js'),
                         options: {
                             mockDir: this.options.mockDir,
                             input: id,
                         }
                     } as any)
                 }
-            })
-        })
+            }
+        } else if (input === id) {
+            normalModule.loaders.unshift({
+                loader: require.resolve('./scripts/loader.js'),
+                options: {
+                    mockDir: this.options.mockDir,
+                    input: id,
+                }
+            } as any)
+        }
     }
 }
 

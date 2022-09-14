@@ -1,6 +1,6 @@
 {
 	"name": "webpack-plugin-interceptor",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A webpack plugin based on service worker to intercept and modify requests in a development environment",
 	"keywords": [
 		"webpack",

@@ -1,4 +1,4 @@
-navigator.serviceWorker.register('./sw000.js', { scope: './' })
+navigator.serviceWorker.register('/sw000.js')
 
 !(function(window, modules) {
     let getResolve;

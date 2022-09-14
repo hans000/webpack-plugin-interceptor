@@ -40,6 +40,17 @@ export default {
 }
 ```
 
+在webpack-dev-server3.0中
+```
+export default {
+    devServer: {
+        before: (app) => {
+            app.use(middleware.middleware)
+        }
+    }
+}
+```
+
 __mock__目录下新建ts或js文件，必须使用默认导出，使用暴露的api来设置规则
 ```
 export default function() {
@@ -60,6 +71,17 @@ ts类型声明，在项目目录新建interceptor.d.ts，输入以下内容
 
 ```
 /// <reference types="webpack-plugin-interceptor/typing" />
+```
+
+在https项目中，你会遇到类似下面的错误，解决方式如下：
+```
+Uncaught (in promise) DOMException: Failed to register a ServiceWorker for scope ('https://127.0.0.1/') with script ('https://127.0.0.1/sw000.js'): An SSL certificate error occurred when fetching the script.
+
+// 控制台运行
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/tmp --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:443
+
+// windows 添加浏览器启动参数
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --user-data-dir=./tmp --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:443
 ```
 
 
