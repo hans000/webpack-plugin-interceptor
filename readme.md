@@ -46,7 +46,7 @@ export default {
 }
 ```
 
-// new a ts or js file in \_\_mock\_\_ dir，must be use export default and set rules by plugin provide
+// create a .ts or .js file in \_\_mock\_\_ dir，must be use export default and set rules by plugin provide
 ```
 export default function() {
     window.__INTERCEPTOR_DEVTOOL__.set(
@@ -63,7 +63,7 @@ export default function() {
 
 ```
 
-ts type, new a `interceptor.d.ts` file, input this text
+ts type, create a new file `interceptor.d.ts`, input this text
 
 ```
 /// <reference types="webpack-plugin-interceptor/typing" />
